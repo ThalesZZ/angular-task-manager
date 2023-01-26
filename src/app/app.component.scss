@@ -1,0 +1,10 @@
+.app-container {
+  display: flex;
+  flex-flow: column;
+
+  > header {
+    background-image: linear-gradient(to right, #99A9FC, #72B3F8);
+    padding: 1em;
+    font-size: 1.2em;
+  }
+}

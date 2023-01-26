@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+$bg-color: #EEF2F9;
+$px-size: 16px;
+
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+
+}
+
+body {
+  background-color: $bg-color;
+  font-size: $px-size;
+}
