@@ -10,13 +10,20 @@
     </div>
   </header>
   <div id="board">
-      <div *ngFor="let status of taskStatus" class="status_lane">
+      <div class="status-lane" *ngFor="let status of taskStatus">
         <header>
           <h3>{{status}}</h3>
           <i class="fa fa-ellipsis-v"></i>
         </header>
-        <div *ngFor="let task of tasks | tasksByStatus: status">
-          {{task.title}}
+        <div id="tasks">
+          <div class="task-card" *ngFor="let task of tasks | tasksByStatus: status">
+            <div [ngClass]="['priority-flag', task.priority]">
+              {{task.priority}}
+            </div>
+            <label>
+              {{task.title}}
+            </label>
+          </div>
         </div>
       </div>
   </div>
