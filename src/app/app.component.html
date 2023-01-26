@@ -11,10 +11,13 @@
   </header>
   <div id="board">
       <div *ngFor="let status of taskStatus" class="status_lane">
-        {{status}}
-          <div *ngFor="let task of tasks | tasksByStatus: status">
-            {{task.title}}
-          </div>
+        <header>
+          <h3>{{status}}</h3>
+          <i class="fa fa-ellipsis-v"></i>
+        </header>
+        <div *ngFor="let task of tasks | tasksByStatus: status">
+          {{task.title}}
+        </div>
       </div>
   </div>
 </div>

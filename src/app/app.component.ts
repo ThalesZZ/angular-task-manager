@@ -12,13 +12,13 @@ export class AppComponent {
 
   user: User = { id: 0, name: 'Thales Zarzar', imageUrl: 'assets/profilepic.jpg' };
   tasks: Task[] = [
-    { id: 0, title: 'Task 0', status: 'todo' },
+    { id: 0, title: 'Task 0', status: 'to do', priority: 0 },
     { id: 1, title: 'Task 1', status: 'progress' },
-    { id: 2, title: 'Task 2', status: 'done' },
+    { id: 2, title: 'Task 2', status: 'done', priority: 2 },
   ]
 }
 
 function taskStatusFactory(): TaskStatus[] {
-  const taskStatusList: Array<TaskStatus> = ['todo', 'progress', 'done']
+  const taskStatusList: Array<TaskStatus> = ['to do', 'progress', 'done']
   return Array.from(new Set(taskStatusList));
 }
