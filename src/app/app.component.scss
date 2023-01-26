@@ -91,5 +91,16 @@
 
   }
 
+  > #board {
+    display: flex;
+    width: 100%;
+    gap: 3em;
+    padding: 3em;
+
+    .status_lane {
+      background-color: white;
+      width: 100%;
+    }
+  }
 
 }

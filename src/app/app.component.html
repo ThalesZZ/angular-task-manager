@@ -9,7 +9,12 @@
       <img [src]="user.imageUrl" />
     </div>
   </header>
-  <div class="board">
-
+  <div id="board">
+      <div *ngFor="let tStatus of taskStatus" class="status_lane">
+        {{tStatus}}
+          <div *ngFor="let task of tasks">
+            {{task.title}}
+          </div>
+      </div>
   </div>
 </div>

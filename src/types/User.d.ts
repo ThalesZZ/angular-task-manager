@@ -1,6 +1,4 @@
-
-type User = {
-  id: number;
+interface User extends Entity {
   name: string;
   imageUrl: string;
 }
