@@ -10,9 +10,9 @@
     </div>
   </header>
   <div id="board">
-      <div *ngFor="let tStatus of taskStatus" class="status_lane">
-        {{tStatus}}
-          <div *ngFor="let task of tasks">
+      <div *ngFor="let status of taskStatus" class="status_lane">
+        {{status}}
+          <div *ngFor="let task of tasks | tasksByStatus: status">
             {{task.title}}
           </div>
       </div>
