@@ -5,18 +5,18 @@
       <input type="text" [(ngModel)]="searchTerm" placeholder="Search for tasks..." />
     </div>
     <div id="user-details">
-      <span>{{user.name}}</span>
-      <img [src]="user.imageUrl" />
+      <span>{{loggedUser.name}}</span>
+      <img [src]="loggedUser.imageUrl" />
     </div>
   </header>
   <div id="board">
-      <div class="status-lane" *ngFor="let status of taskStatus">
+      <div class="status-lane" *ngFor="let statusEntry of taskStatus | keyvalue">
         <header>
-          <h3>{{status}}</h3>
+          <h3>{{statusEntry.value.label}}</h3>
           <i class="fa fa-ellipsis-v"></i>
         </header>
         <div id="tasks">
-          <div class="task-card" *ngFor="let task of tasks | tasksByStatus: status">
+          <div class="task-card" *ngFor="let task of tasks | keyvalue | tasksByStatus: statusEntry.value.identifier">
             <div [ngClass]="['priority-flag', task.priority]">
               {{task.priority}}
             </div>

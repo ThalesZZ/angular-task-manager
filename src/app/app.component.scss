@@ -49,7 +49,6 @@
       max-width: 20em;
       border-left: 1px solid #ffffff55;
       white-space: nowrap;
-      color: white;
       padding-left: 1.5em;
       padding-right: 3em;
       cursor: pointer;
@@ -66,6 +65,7 @@
 
       span, img {
         z-index: 2;
+        color: white;
       }
 
       img {
@@ -129,7 +129,6 @@
       }
 
       > header {
-        text-transform: capitalize;
         padding: 1em 1.5em;
         display: flex;
         align-items: center;
@@ -155,6 +154,7 @@
             color: white;
             text-transform: capitalize;
             font-size: 0.8em;
+            user-select: none;
 
             &.low {
               background-image: linear-gradient(to right, #76D3AA, #79D3E5);

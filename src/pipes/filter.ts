@@ -1,3 +1,4 @@
+import { KeyValue } from '@angular/common';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
@@ -5,10 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
     pure: false
 })
 export class TasksByStatus implements PipeTransform {
-    transform(tasks: Task[], status: TaskStatus): any {
-        if (!tasks || !status)
-            return tasks;
+    transform(entries: KeyValue<number, Task>[], statusIdentifier: string): Task[] {
+        if (!entries || !statusIdentifier)
+            return entries.map(entry => entry.value);
 
-        return tasks.filter(task => task.status === status);
+        return entries.filter(entry => entry.value.status?.identifier === statusIdentifier).map(entry => entry.value);
     }
 }
