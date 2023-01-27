@@ -17,6 +17,7 @@ interface Task extends Entity {
   description?: string;
   priority: TaskPriority;
   status: TaskStatus | undefined;
+  responsibles: User[];
 }
 
 interface TaskDTO extends Entity {
@@ -24,4 +25,5 @@ interface TaskDTO extends Entity {
   description?: string;
   priority: TaskPriority;
   statusIdentifier: string;
+  responsiblesIds: number[];
 }

@@ -11,13 +11,14 @@ import { taskStatusFactory } from 'src/data/factory';
 export class AppComponent {
   // data
   users = API.user.getAll()
-  tasks = API.task.getAll()
+  tasks = API.task.getAll(this.users)
 
   // meta data
-  loggedUser = this.users.get(0) as User
+  loggedUser = this.users.get(999)
   taskStatus = Array.from(taskStatusFactory().values())
 
   // interface states
-  searchTerm = '';
+  maxDisplayResponsibles = 2
+  searchTerm = ''
 
 }

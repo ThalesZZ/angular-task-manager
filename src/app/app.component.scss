@@ -99,11 +99,11 @@
 
     .status-lane {
       position: relative;
-
       background-color: #F6F8FB;
       box-shadow: 0px 0px 3px 3px #0003;
       border-radius: 0.2em;
       width: 100%;
+      height: fit-content;
 
       &::before {
         position: absolute;
@@ -170,6 +170,27 @@
           label {
             padding: 1em 0em;
             font-weight: bold;
+          }
+
+          .responsibles {
+            display: flex;
+            justify-content: end;
+            gap: 0.5em;
+
+            $size: 1.8em;
+
+            img, .more-responsibles {
+              width: $size;
+              height: $size;
+              border-radius: 100%;
+              object-fit: cover;
+              background-color: #EEF2F9;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-weight: bold;
+              border: 1px solid #e4e4e4;
+            }
           }
         }
       }

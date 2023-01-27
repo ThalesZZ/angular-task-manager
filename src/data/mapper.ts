@@ -10,11 +10,14 @@ export const Mapper = {
     }
   },
   task: {
-    toEntity(dto: TaskDTO): Task {
-      return { ...dto, status: taskStatusFactory().get(dto.statusIdentifier) }
+    toEntity(dto: TaskDTO, users: Map<number, User>): Task {
+      const status = taskStatusFactory().get(dto.statusIdentifier)
+      const responsibles = dto.responsiblesIds.map(responsibleId => users.get(responsibleId))
+
+      return { ...dto, status, responsibles }
     },
-    toMap(dtos: TaskDTO[]): Map<number, Task> {
-      return new Map(dtos.map(dto => [dto.id, Mapper.task.toEntity(dto)]))
+    toMap(dtos: TaskDTO[], users: Map<number, User>): Map<number, Task> {
+      return new Map(dtos.map(dto => [dto.id, Mapper.task.toEntity(dto, users)]))
     }
   }
 }

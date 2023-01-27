@@ -1,9 +1,9 @@
 export function taskStatusFactory(): Map<string, TaskStatus> {
   const list: TaskStatus[] = [
-    { identifier: 'backlog', label: 'Backlog', color: 'yellow' },
-    { identifier: 'to_do', label: 'To Do', color: 'purple' },
-    { identifier: 'in_progress', label: 'In Progress', color: 'blue' },
-    { identifier: 'done', label: 'Done', color: 'green' }
+    { identifier: 'backlog', label: 'Backlog' },
+    { identifier: 'to_do', label: 'To Do' },
+    { identifier: 'in_progress', label: 'In Progress' },
+    { identifier: 'done', label: 'Done' }
   ]
 
   return new Map(list.map(taskStatus => [taskStatus.identifier, taskStatus]))
