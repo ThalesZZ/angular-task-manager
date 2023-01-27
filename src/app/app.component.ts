@@ -15,7 +15,7 @@ export class AppComponent {
 
   // meta data
   loggedUser = this.users.get(0) as User
-  taskStatus = taskStatusFactory()
+  taskStatus = Array.from(taskStatusFactory().values())
 
   // interface states
   searchTerm = '';

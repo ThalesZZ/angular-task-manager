@@ -10,13 +10,13 @@
     </div>
   </header>
   <div id="board">
-      <div class="status-lane" *ngFor="let statusEntry of taskStatus | keyvalue">
+      <div class="status-lane" *ngFor="let status of taskStatus">
         <header>
-          <h3>{{statusEntry.value.label}}</h3>
+          <h3>{{status.label}}</h3>
           <i class="fa fa-ellipsis-v"></i>
         </header>
         <div id="tasks">
-          <div class="task-card" *ngFor="let task of tasks | keyvalue | tasksByStatus: statusEntry.value.identifier">
+          <div class="task-card" *ngFor="let task of tasks | keyvalue | tasksByStatus: status.identifier">
             <div [ngClass]="['priority-flag', task.priority]">
               {{task.priority}}
             </div>
