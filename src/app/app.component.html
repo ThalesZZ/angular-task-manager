@@ -10,6 +10,9 @@
     </div>
   </header>
   <div id="board">
+    <button id="new-task" (click)="newTask()">
+      <span>&plus;</span>
+    </button>
       <div class="status-lane" *ngFor="let status of taskStatus">
         <header>
           <h3>{{status.label}}</h3>
@@ -18,7 +21,7 @@
         <div id="tasks">
           <div class="task-card" *ngFor="let task of tasks | keyvalue | tasksByStatus: status.identifier">
             <div [ngClass]="['priority-flag', task.priority]">
-              {{task.priority}}
+              {{task.priority}} priority
             </div>
             <label>
               {{task.title}}

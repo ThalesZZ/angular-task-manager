@@ -21,4 +21,16 @@ export class AppComponent {
   maxDisplayResponsibles = 2
   searchTerm = ''
 
+  // interface functions
+  newTask = () => {
+    API.task.create({
+      id: null,
+      responsibles: [],
+      title: 'AAAA',
+      priority: 'high',
+      status: taskStatusFactory().get('to_do')
+    })
+    this.tasks = API.task.getAll(this.users)
+  }
+
 }

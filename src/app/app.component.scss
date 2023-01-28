@@ -1,3 +1,25 @@
+@mixin gradient-hover() {
+  > * {
+    z-index: 2;
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    inset: 0;
+    background-image: linear-gradient(to right, #ffaa5a, #fd7945);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.1s linear;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
 .app-container {
   width: 100vw;
   height: 100vh;
@@ -7,6 +29,7 @@
   overflow-y: auto;
   display: flex;
   flex-flow: column;
+  position: relative;
 
   > header {
     $size: 4.2em;
@@ -53,18 +76,9 @@
       padding-right: 3em;
       cursor: pointer;
 
-      &::before {
-        position: absolute;
-        content: "";
-        inset: 0;
-        background-image: linear-gradient(to right, #ffaa5a, #fd7945);
-        z-index: 1;
-        opacity: 0;
-        transition: opacity 0.1s linear;
-      }
+      @include gradient-hover();
 
-      span, img {
-        z-index: 2;
+      span {
         color: white;
       }
 
@@ -78,11 +92,6 @@
       }
 
       &:hover {
-
-        &::before {
-          opacity: 1;
-        }
-
         img {
           border: 0.2em solid white;
         }
@@ -92,6 +101,34 @@
   }
 
   > #board {
+    button, #new-task {
+      @include gradient-hover();
+      &::before {
+        border-radius: 100%;
+      }
+
+      $size: 1.7em;
+      $offset: 0.8em;
+
+      position: absolute;
+      background-image: linear-gradient(to right, #99A9FC, #72B3F8);
+      right: $offset;
+      bottom: $offset;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: $size;
+      height: $size;
+      border-radius: 100%;
+      border: none;
+      cursor: pointer;
+      font-size: 2.5em;
+      box-shadow: 0px 0.2em 0.3em 0.05em #0002;
+
+      span {
+        color: white;}
+    }
+
     display: flex;
     width: 100%;
     gap: 3em;

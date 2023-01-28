@@ -10,6 +10,12 @@ export const Mapper = {
     }
   },
   task: {
+    toDTO(entity: Task): TaskDTO {
+      const responsiblesIds = entity.responsibles.map(responsible => responsible.id)
+      const statusIdentifier = entity.status.identifier
+
+      return { ...entity, responsiblesIds, statusIdentifier }
+    },
     toEntity(dto: TaskDTO, users: Map<number, User>): Task {
       const status = taskStatusFactory().get(dto.statusIdentifier)
       const responsibles = dto.responsiblesIds.map(responsibleId => users.get(responsibleId))
