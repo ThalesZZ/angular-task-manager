@@ -20,6 +20,8 @@
   }
 }
 
+$header-size: 4.2em;
+
 .app-container {
   width: 100vw;
   height: 100vh;
@@ -32,9 +34,11 @@
   position: relative;
 
   > header {
-    $size: 4.2em;
-    height: $size;
-    max-height: $size;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: $header-size;
+    max-height: $header-size;
     display: flex;
     justify-content: space-between;
     background-image: linear-gradient(to right, #99A9FC, #72B3F8);
@@ -101,6 +105,8 @@
   }
 
   > #board {
+    margin-top: $header-size;
+
     button, #new-task {
       @include gradient-hover();
       &::before {
@@ -110,7 +116,7 @@
       $size: 1.7em;
       $offset: 0.8em;
 
-      position: absolute;
+      position: fixed;
       background-image: linear-gradient(to right, #99A9FC, #72B3F8);
       right: $offset;
       bottom: $offset;
