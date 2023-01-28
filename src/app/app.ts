@@ -25,18 +25,19 @@ export class AppComponent {
   // interface states
   searchTerm = ''
   maxDisplayResponsibles = 2
-  showNewTaskModal = true
+  showNewTaskModal = false
 
   // interface functions
-  newTask = () => {
-    API.task.create({
-      id: null,
-      responsibles: [],
-      title: 'AAAA',
-      priority: 'high',
-      status: taskStatusFactory().get('to_do')
-    })
-    this.tasks = API.task.getAll(this.users)
+  createNewTask = () => {
+    this.showNewTaskModal = true
+    // API.task.create({
+    //   id: null,
+    //   responsibles: [],
+    //   title: 'AAAA',
+    //   priority: 'high',
+    //   status: taskStatusFactory().get('to_do')
+    // })
+    // this.tasks = API.task.getAll(this.users)
   }
 
 }

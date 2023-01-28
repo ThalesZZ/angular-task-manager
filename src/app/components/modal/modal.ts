@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, NgModule } from '@angular/core';
+import { Component, Input, NgModule } from '@angular/core';
 
 @Component({
   selector: 'modal',
@@ -13,6 +13,7 @@ export class ModalComponent {
   // meta data
 
   // interface states
+  @Input() title: string
 
   // interface functions
 }

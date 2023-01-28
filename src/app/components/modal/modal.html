@@ -1,4 +1,9 @@
-<div class="modal-container">
-  aaaaaaaaaaaa
-</div>
-<div class="modal-overlay"></div>
+<ng-container>
+  <div class="modal-container">
+    <header>
+      {{title}}
+    </header>
+    <ng-content></ng-content>
+  </div>
+  <div class="modal-overlay"></div>
+</ng-container>

@@ -10,7 +10,7 @@
     </div>
   </header>
   <div id="board">
-      <button id="new-task" (click)="newTask()">
+      <button id="new-task" (click)="createNewTask()">
         <span>&plus;</span>
       </button>
       <div class="status-lane" *ngFor="let status of taskStatus">
@@ -37,6 +37,6 @@
       </div>
   </div>
 </div>
-<modal *ngIf="showNewTaskModal">
-  test
+
+<modal title="New Task" *ngIf="showNewTaskModal">
 </modal>
