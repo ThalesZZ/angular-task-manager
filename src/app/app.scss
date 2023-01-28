@@ -217,7 +217,7 @@ $header-size: 4.2em;
 
           .responsibles {
             display: flex;
-            justify-content: end;
+            justify-content: flex-end;
             gap: 0.5em;
 
             $size: 1.8em;
