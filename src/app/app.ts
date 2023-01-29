@@ -26,7 +26,7 @@ export class AppComponent {
   // interface states
   searchTerm = ''
   maxDisplayResponsibles = 2
-  showNewTaskModal = false
+  showNewTaskModal = true
 
   // interface functions
   closeNewTaskModal = () => (this.showNewTaskModal = false)
