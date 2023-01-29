@@ -1,24 +1,4 @@
-@mixin gradient-hover() {
-  > * {
-    z-index: 2;
-  }
-
-  &::before {
-    position: absolute;
-    content: "";
-    inset: 0;
-    background-image: linear-gradient(to right, #ffaa5a, #fd7945);
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 0.1s linear;
-  }
-
-  &:hover {
-    &::before {
-      opacity: 1;
-    }
-  }
-}
+@import '../styles.scss';
 
 $header-size: 4.2em;
 
@@ -41,7 +21,7 @@ $header-size: 4.2em;
     max-height: $header-size;
     display: flex;
     justify-content: space-between;
-    background-image: linear-gradient(to right, #99A9FC, #72B3F8);
+    @include blue-gradient();
 
     .input-container {
       padding: 1.2em 2em;
@@ -101,39 +81,36 @@ $header-size: 4.2em;
         }
       }
     }
-
   }
+
+  button, #new-task {
+    @include gradient-hover();
+    &::before {
+      border-radius: 100%;
+    }
+
+    $size: 1.7em;
+    $offset: 0.8em;
+
+    position: fixed;
+    @include blue-gradient();
+    right: $offset;
+    bottom: $offset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $size;
+    height: $size;
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 2.5em;
+    box-shadow: 0px 0.2em 0.3em 0.05em #0002;
+  }
+
 
   > #board {
     margin-top: $header-size;
-
-    button, #new-task {
-      @include gradient-hover();
-      &::before {
-        border-radius: 100%;
-      }
-
-      $size: 1.7em;
-      $offset: 0.8em;
-
-      position: fixed;
-      background-image: linear-gradient(to right, #99A9FC, #72B3F8);
-      right: $offset;
-      bottom: $offset;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: $size;
-      height: $size;
-      border-radius: 100%;
-      border: none;
-      cursor: pointer;
-      font-size: 2.5em;
-      box-shadow: 0px 0.2em 0.3em 0.05em #0002;
-
-      span {
-        color: white;}
-    }
 
     display: flex;
     width: 100%;
@@ -159,13 +136,13 @@ $header-size: 4.2em;
         background-image: linear-gradient(to right, #93a4fc, #66ABF8);
       }
 
-      &:first-child{
+      &:first-child {
         &::before {
           background-image: linear-gradient(to right, #CA75E2, #D9678D);
         }
       }
 
-      &:last-child{
+      &:last-child {
         &::before {
           background-image: linear-gradient(to right, #76D3AA, #79D3E5);
         }

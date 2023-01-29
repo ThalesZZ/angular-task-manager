@@ -9,10 +9,10 @@
       <img [src]="loggedUser.imageUrl" />
     </div>
   </header>
+  <button id="new-task" (click)="createNewTask()">
+    <span>&plus;</span>
+  </button>
   <div id="board">
-      <button id="new-task" (click)="createNewTask()">
-        <span>&plus;</span>
-      </button>
       <div class="status-lane" *ngFor="let status of taskStatus">
         <header>
           <h3>{{status.label}}</h3>
