@@ -28,6 +28,8 @@ export class AppComponent {
   showNewTaskModal = false
 
   // interface functions
+  closeNewTaskModal = () => (this.showNewTaskModal = false)
+
   createNewTask = () => {
     this.showNewTaskModal = true
     // API.task.create({

@@ -85,6 +85,8 @@ $header-size: 4.2em;
 
   button, #new-task {
     @include gradient-hover();
+    @include blue-gradient();
+
     &::before {
       border-radius: 100%;
     }
@@ -93,17 +95,11 @@ $header-size: 4.2em;
     $offset: 0.8em;
 
     position: fixed;
-    @include blue-gradient();
     right: $offset;
     bottom: $offset;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: $size;
     height: $size;
     border-radius: 100%;
-    border: none;
-    cursor: pointer;
     font-size: 2.5em;
     box-shadow: 0px 0.2em 0.3em 0.05em #0002;
   }

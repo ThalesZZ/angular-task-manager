@@ -16,6 +16,8 @@ export class ModalComponent {
   @Input() title: string
 
   // interface functions
+  @Input() onClose: () => void
+
 }
 
 @NgModule({
