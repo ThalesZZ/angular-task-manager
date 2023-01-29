@@ -39,4 +39,9 @@
 </div>
 
 <modal title="New Task" [onClose]="closeNewTaskModal" *ngIf="showNewTaskModal">
+  <input type="text" placeholder="Title" [(ngModel)]="taskFromModal.title">
+  <textarea placeholder="Description" [(ngModel)]="taskFromModal.description">
+  </textarea>
+  <!-- priority -->
+  <!-- responsibles -->
 </modal>

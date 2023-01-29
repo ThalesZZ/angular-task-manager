@@ -1,4 +1,4 @@
-import { taskStatusFactory } from "./factory"
+import { Factory } from "./factory"
 
 export const Mapper = {
   user: {
@@ -17,7 +17,7 @@ export const Mapper = {
       return { ...entity, responsiblesIds, statusIdentifier }
     },
     toEntity(dto: TaskDTO, users: Map<number, User>): Task {
-      const status = taskStatusFactory().get(dto.statusIdentifier)
+      const status = Factory.task.statusMap().get(dto.statusIdentifier)
       const responsibles = dto.responsiblesIds.map(responsibleId => users.get(responsibleId))
 
       return { ...dto, status, responsibles }

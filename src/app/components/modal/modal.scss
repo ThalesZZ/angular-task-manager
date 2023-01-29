@@ -25,6 +25,8 @@ $border-radius: 0.5em;
 
   .modal-content {
     padding: 1em;
+    display: flex;
+    flex-flow: column;
   }
 }
 

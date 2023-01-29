@@ -3,7 +3,7 @@ import { Component, NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser'
 import { API } from 'src/data/api'
-import { taskStatusFactory } from 'src/data/factory'
+import { Factory } from 'src/data/factory'
 import { TasksByStatus } from 'src/pipes/filter'
 import { ModalModule } from './components/modal/modal'
 
@@ -20,7 +20,8 @@ export class AppComponent {
 
   // meta data
   loggedUser = this.users.get(999)
-  taskStatus = Array.from(taskStatusFactory().values())
+  taskStatus = Array.from(Factory.task.statusMap().values())
+  taskFromModal: Task = Factory.task.empty(this.loggedUser)
 
   // interface states
   searchTerm = ''
