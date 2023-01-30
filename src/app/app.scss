@@ -172,15 +172,7 @@ $header-size: 4.2em;
             font-size: 0.8em;
             user-select: none;
 
-            &.low {
-              background-image: linear-gradient(to right, #76D3AA, #79D3E5);
-            }
-            &.medium {
-              background-image: linear-gradient(to right, #93a4fc, #66ABF8);
-            }
-            &.high {
-              background-image: linear-gradient(to right, #CA75E2, #D9678D);
-            }
+            @include priorities-colors();
           }
 
           label {

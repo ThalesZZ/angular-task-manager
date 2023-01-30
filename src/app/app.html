@@ -38,10 +38,15 @@
   </div>
 </div>
 
-<modal title="New Task" [onClose]="closeNewTaskModal" *ngIf="showNewTaskModal">
+<modal [title]="'New Task'" [onClose]="closeNewTaskModal" *ngIf="showNewTaskModal">
   <input type="text" placeholder="Title" [(ngModel)]="taskFromModal.title">
+  <div class="button-group">
+    <button *ngFor="let priority of taskPriorities" (click)="setTaskFromModalPriority(priority)" [ngClass]="[taskFromModal.priority === priority ? 'active' : '', priority]">
+      {{priority}}
+    </button>
+  </div>
+  <!-- responsibles -->
   <textarea placeholder="Description" [(ngModel)]="taskFromModal.description">
   </textarea>
-  <!-- priority -->
-  <!-- responsibles -->
+  <button class="action"><span>save</span></button>
 </modal>

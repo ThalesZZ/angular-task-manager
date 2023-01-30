@@ -21,6 +21,7 @@ export class AppComponent {
   // meta data
   loggedUser = this.users.get(999)
   taskStatus = Array.from(Factory.task.statusMap().values())
+  taskPriorities = Array.from<TaskPriority>(['low', 'medium', 'high'])
   taskFromModal: Task = Factory.task.empty(this.loggedUser)
 
   // interface states
@@ -30,6 +31,7 @@ export class AppComponent {
 
   // interface functions
   closeNewTaskModal = () => (this.showNewTaskModal = false)
+  setTaskFromModalPriority = (priority: TaskPriority) => (this.taskFromModal.priority = priority)
 
   createNewTask = () => {
     this.showNewTaskModal = true

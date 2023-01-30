@@ -1,7 +1,55 @@
 $bg-color: #EEF2F9;
 $em-size: 16px;
+$border-radius: 0.5em;
+
 $blue-gradient-color: linear-gradient(to right, #99A9FC, #72B3F8);
 $orange-gradient-color: linear-gradient(to right, #ffaa5a, #fd7945);
+
+@mixin priorities-colors() {
+  &.low {
+    background-image: linear-gradient(to right, #76D3AA, #79D3E5);
+  }
+  &.medium {
+    background-image: linear-gradient(to right, #93a4fc, #66ABF8);
+  }
+  &.high {
+    background-image: linear-gradient(to right, #CA75E2, #D9678D);
+  }
+}
+
+@mixin blue-gradient() {
+  background-image: $blue-gradient-color;
+  color: white;
+  > span, > div {
+    color: white;
+  }
+}
+
+@mixin gradient-hover() {
+  position: relative;
+
+  > * {
+    position: sticky;
+    z-index: 2;
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    inset: 0;
+    background-image: $orange-gradient-color;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.1s linear;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
 
 * {
   box-sizing: border-box;
@@ -38,6 +86,18 @@ button {
   cursor: pointer;
   border: none;
 
+  &.action {
+    @include blue-gradient();
+    @include gradient-hover();
+    padding: 1em;
+    border-radius: $border-radius;
+    text-transform: capitalize;
+
+    &::before {
+      border-radius: $border-radius;
+    }
+  }
+
   &.x-close {
     background-color: transparent;
     &::after {
@@ -59,33 +119,28 @@ button {
   }
 }
 
-@mixin blue-gradient() {
-  background-image: $blue-gradient-color;
-  color: white;
-  > span, > div {
-    color: white;
-  }
-}
+.button-group {
+  display: flex;
+  gap: 0.1em;
 
-@mixin gradient-hover() {
-  > * {
-    position: sticky;
-    z-index: 2;
-  }
+  button {
+    width: 100%;
+    padding: 0.3em 0px;
+    text-transform: capitalize;
 
-  &::before {
-    position: absolute;
-    content: "";
-    inset: 0;
-    background-image: $orange-gradient-color;
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 0.1s linear;
-  }
+    &.active {
+      @include priorities-colors();
+      color: white;
+    }
 
-  &:hover {
-    &::before {
-      opacity: 1;
+    &:first-child {
+      border-top-left-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+    }
+
+    &:last-child {
+      border-top-right-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
     }
   }
 }
