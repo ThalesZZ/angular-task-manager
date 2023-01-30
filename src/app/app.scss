@@ -185,19 +185,12 @@ $header-size: 4.2em;
             justify-content: flex-end;
             gap: 0.5em;
 
-            $size: 1.8em;
-
             img, .more-responsibles {
-              width: $size;
-              height: $size;
-              border-radius: 100%;
-              object-fit: cover;
               background-color: #EEF2F9;
               display: flex;
               justify-content: center;
               align-items: center;
               font-weight: bold;
-              border: 1px solid #e4e4e4;
             }
           }
         }

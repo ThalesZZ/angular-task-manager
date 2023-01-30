@@ -1,15 +1,15 @@
 export const Factory: {
   task: {
-    empty: (defaultUser?: User) => Task,
+    empty: (defaultUsers?: User[]) => Task,
     statusMap: () => Map<string, TaskStatus>
   }
 } = {
   task: {
-    empty: defaultUser => ({
+    empty: defaultUsers => ({
       id: null,
       title: null,
       priority: 'medium',
-      responsibles: defaultUser ? [defaultUser] : [],
+      responsibles: defaultUsers ? [...defaultUsers] : [],
       status: Factory.task.statusMap().get('backlog'),
       description: null
     }),

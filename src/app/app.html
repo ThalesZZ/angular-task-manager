@@ -27,7 +27,7 @@
               {{task.title}}
             </label>
             <div class="responsibles">
-              <img *ngFor="let responsible of task.responsibles | slice:0:maxDisplayResponsibles" [attr.src]="responsible.imageUrl" />
+              <img class="responsible-img" *ngFor="let responsible of task.responsibles | slice:0:maxDisplayResponsibles" [attr.src]="responsible.imageUrl" />
               <div class="more-responsibles" *ngIf="task.responsibles.length > maxDisplayResponsibles">
                 +{{ task.responsibles.length - maxDisplayResponsibles }}
               </div>
@@ -41,11 +41,15 @@
 <modal [title]="'New Task'" [onClose]="closeNewTaskModal" *ngIf="showNewTaskModal">
   <input type="text" placeholder="Title" [(ngModel)]="taskFromModal.title">
   <div class="button-group">
-    <button *ngFor="let priority of taskPriorities" (click)="setTaskFromModalPriority(priority)" [ngClass]="[taskFromModal.priority === priority ? 'active' : '', priority]">
+    <button *ngFor="let priority of taskPriorities" (click)="setTaskFromModal.priority(priority)" [ngClass]="[taskFromModal.priority === priority ? 'active' : '', priority]">
       {{priority}}
     </button>
   </div>
-  <!-- responsibles -->
+  <div class="responsibles-list">
+    <div *ngFor="let responsible of taskFromModal.responsibles" (click)="setTaskFromModal.responsibles.remove(responsible)">
+      <img class="responsible-img" [src]="responsible.imageUrl" [title]="responsible.name"  />
+    </div>
+  </div>
   <textarea placeholder="Description" [(ngModel)]="taskFromModal.description">
   </textarea>
   <button class="action"><span>save</span></button>

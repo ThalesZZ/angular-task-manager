@@ -22,7 +22,7 @@ export class AppComponent {
   loggedUser = this.users.get(999)
   taskStatus = Array.from(Factory.task.statusMap().values())
   taskPriorities = Array.from<TaskPriority>(['low', 'medium', 'high'])
-  taskFromModal: Task = Factory.task.empty(this.loggedUser)
+  taskFromModal: Task = Factory.task.empty([this.loggedUser])
 
   // interface states
   searchTerm = ''
@@ -31,7 +31,12 @@ export class AppComponent {
 
   // interface functions
   closeNewTaskModal = () => (this.showNewTaskModal = false)
-  setTaskFromModalPriority = (priority: TaskPriority) => (this.taskFromModal.priority = priority)
+  setTaskFromModal = {
+    priority: (priority: TaskPriority) => (this.taskFromModal.priority = priority),
+    responsibles: {
+      remove: (responsible: User) => (this.taskFromModal.responsibles = this.taskFromModal.responsibles.reduce((acc, r) => r.id === responsible.id ? acc : [...acc, r], []))
+    }
+  }
 
   createNewTask = () => {
     this.showNewTaskModal = true
