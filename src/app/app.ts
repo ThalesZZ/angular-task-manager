@@ -37,6 +37,13 @@ export class AppComponent {
   setTaskFromModal = {
     priority: (priority: TaskPriority) => (this.taskFromModal.priority = priority),
     responsibles: {
+      add: (responsible: User) =>{
+        if(!responsible) return
+
+        const select: HTMLSelectElement = document.getElementById('select-responsible') as HTMLSelectElement
+        select.selectedIndex = 0
+        this.taskFromModal.responsibles.push(responsible)
+      },
       remove: (responsible: User) => (this.taskFromModal.responsibles = this.taskFromModal.responsibles.reduce((acc, r) => r.id === responsible.id ? acc : [...acc, r], []))
     }
   }

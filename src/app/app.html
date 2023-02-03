@@ -50,9 +50,9 @@
       <img class="responsible-img" [src]="responsible.imageUrl" [title]="responsible.name"  />
     </div>
   </div>
-  <select>
-    <option selected>Assign responsibles</option>
-    <option *ngFor="let entry of users | keyvalue">{{entry.value.name}}</option>
+  <select id="select-responsible" ngModel (ngModelChange)="setTaskFromModal.responsibles.add($event)">
+    <option disabled selected [ngValue]="null">Assign responsible</option>
+    <option *ngFor="let entry of users | keyvalue" [ngValue]="entry.value">{{entry.value.name}}</option>
   </select>
   <textarea placeholder="Description" [(ngModel)]="taskFromModal.description">
   </textarea>
