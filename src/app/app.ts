@@ -27,10 +27,13 @@ export class AppComponent {
   // interface states
   searchTerm = ''
   maxDisplayResponsibles = 2
-  showNewTaskModal = true
+  showNewTaskModal = !false
 
   // interface functions
-  closeNewTaskModal = () => (this.showNewTaskModal = false)
+  closeNewTaskModal = () => {
+    this.taskFromModal = Factory.task.empty([this.loggedUser])
+    this.showNewTaskModal = false
+  }
   setTaskFromModal = {
     priority: (priority: TaskPriority) => (this.taskFromModal.priority = priority),
     responsibles: {

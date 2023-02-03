@@ -50,6 +50,10 @@
       <img class="responsible-img" [src]="responsible.imageUrl" [title]="responsible.name"  />
     </div>
   </div>
+  <select>
+    <option selected>Assign responsibles</option>
+    <option *ngFor="let entry of users | keyvalue">{{entry.value.name}}</option>
+  </select>
   <textarea placeholder="Description" [(ngModel)]="taskFromModal.description">
   </textarea>
   <button class="action"><span>save</span></button>

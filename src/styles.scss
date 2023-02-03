@@ -51,6 +51,24 @@ $orange-gradient-color: linear-gradient(to right, #ffaa5a, #fd7945);
   }
 }
 
+@mixin input-styles() {
+  background-color: transparent;
+  outline: none;
+  padding: 0.5em;
+
+  border-width: 1px;
+  border-style: solid;
+  border-image-slice: 1;
+  border-image-source: $blue-gradient-color;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
+  font-size: 1em;
+
+  &:focus {
+    border-image-source: $orange-gradient-color;
+  }
+}
 
 * {
   box-sizing: border-box;
@@ -75,6 +93,7 @@ img, .responsible-img {
 .responsibles-list {
   display: flex;
   overflow-x: auto;
+  overflow-y: hidden;
   gap: 0.3em;
 
   > div {
@@ -107,22 +126,8 @@ img, .responsible-img {
 }
 
 input, textarea {
-  outline: none;
-  border-width: 1px;
-  border-style: solid;
-  border-image-slice: 1;
-  border-image-source: $blue-gradient-color;
-  border-left: 0px;
-  border-right: 0px;
-  border-top: 0px;
-  font-size: 1em;
-  padding: 0.5em;
+  @include input-styles();
   resize: none;
-
-  &:focus {
-    border-image-source: $orange-gradient-color;
-  }
-
 }
 
 button {
@@ -186,4 +191,8 @@ button {
       border-bottom-right-radius: $border-radius;
     }
   }
+}
+
+select {
+  @include input-styles();
 }
