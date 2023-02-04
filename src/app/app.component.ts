@@ -5,12 +5,12 @@ import { BrowserModule } from '@angular/platform-browser'
 import { API } from 'src/data/api'
 import { Factory } from 'src/data/factory'
 import { TasksByStatus } from 'src/pipes/filter'
-import { ModalModule } from './components/modal/modal'
+import { ModalComponent } from './components/modal/modal.component'
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.html',
-  styleUrls: ['./app.scss']
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 
 export class AppComponent {
@@ -63,8 +63,8 @@ export class AppComponent {
 }
 
 @NgModule({
-  declarations: [AppComponent, TasksByStatus],
-  imports: [BrowserModule, FormsModule, CommonModule, ModalModule],
+  declarations: [AppComponent, ModalComponent, TasksByStatus],
+  imports: [BrowserModule, FormsModule, CommonModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
