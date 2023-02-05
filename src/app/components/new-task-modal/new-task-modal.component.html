@@ -1,0 +1,21 @@
+
+<app-modal [title]="'New Task'">
+  <input type="text" placeholder="Title" [(ngModel)]="task.title">
+  <div class="button-group">
+    <button *ngFor="let priority of prioritiesList" (click)="setTask.priority(priority)" [ngClass]="[task.priority === priority ? 'active' : '', priority]">
+      {{priority}}
+    </button>
+  </div>
+  <div class="responsibles-list">
+    <div *ngFor="let responsible of task.responsibles" (click)="setTask.responsibles.remove(responsible)">
+      <img class="responsible-img" [src]="responsible.imageUrl" [title]="responsible.name"  />
+    </div>
+  </div>
+  <select id="select-responsible" ngModel (ngModelChange)="setTask.responsibles.add($event)">
+    <option disabled selected [ngValue]="null">Assign responsible</option>
+    <option *ngFor="let entry of users | keyvalue" [ngValue]="entry.value">{{entry.value.name}}</option>
+  </select>
+  <textarea placeholder="Description" [(ngModel)]="task.description">
+  </textarea>
+  <button class="action"><span>save</span></button>
+</app-modal>

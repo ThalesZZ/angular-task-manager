@@ -6,6 +6,7 @@ import { API } from 'src/data/api'
 import { Factory } from 'src/data/factory'
 import { TasksByStatus } from 'src/pipes/filter'
 import { ModalComponent } from './components/modal/modal.component'
+import { NewTaskModalComponent } from './components/new-task-modal/new-task-modal.component'
 
 @Component({
   selector: 'app-root',
@@ -21,8 +22,6 @@ export class AppComponent {
   // meta data
   loggedUser = this.users.get(999)
   taskStatus = Array.from(Factory.task.statusMap().values())
-  taskPriorities = Array.from<TaskPriority>(['low', 'medium', 'high'])
-  taskFromModal: Task = Factory.task.empty([this.loggedUser])
 
   // interface states
   searchTerm = ''
@@ -30,23 +29,6 @@ export class AppComponent {
   showNewTaskModal = !false
 
   // interface functions
-  closeNewTaskModal = () => {
-    this.taskFromModal = Factory.task.empty([this.loggedUser])
-    this.showNewTaskModal = false
-  }
-  setTaskFromModal = {
-    priority: (priority: TaskPriority) => (this.taskFromModal.priority = priority),
-    responsibles: {
-      add: (responsible: User) =>{
-        if(!responsible) return
-
-        const select: HTMLSelectElement = document.getElementById('select-responsible') as HTMLSelectElement
-        select.selectedIndex = 0
-        this.taskFromModal.responsibles.push(responsible)
-      },
-      remove: (responsible: User) => (this.taskFromModal.responsibles = this.taskFromModal.responsibles.reduce((acc, r) => r.id === responsible.id ? acc : [...acc, r], []))
-    }
-  }
 
   createNewTask = () => {
     this.showNewTaskModal = true
@@ -63,7 +45,12 @@ export class AppComponent {
 }
 
 @NgModule({
-  declarations: [AppComponent, ModalComponent, TasksByStatus],
+  declarations: [
+    AppComponent,
+     ModalComponent,
+      NewTaskModalComponent,
+      TasksByStatus
+    ],
   imports: [BrowserModule, FormsModule, CommonModule],
   bootstrap: [AppComponent]
 })
